@@ -5,7 +5,11 @@
 
 #### Version 5.0.0.1 (In progress)
 - Added property to build the adapter with GMA Next-Gen SDK dependency.
-- Fixed a bug where mediation utils object wasn't being initialized.
+- Fixed a bug where the `mediationUtils` object wasn't being initialized.
+
+Built and tested with:
+- Google Mobile Ads SDK version 25.1.0.
+- Pubmatic SDK version 5.0.0
 
 #### Version 5.0.0.0
 - Verified compatibility with Pubmatic SDK 5.0.0.
@@ -23,7 +27,7 @@ Built and tested with:
 
 #### Version 4.11.0.1
 - Added support for forwarding the `tagForUnderAgeOfConsent` Google Mobile Ads SDK
-  parameter to the PubMatic SDK.
+parameter to the PubMatic SDK.
 
 Built and tested with:
 - Google Mobile Ads SDK version 24.9.0.

@@ -106,6 +106,7 @@ class VungleRtbInterstitialAdTest {
       whenever(VungleInitializer.getInstance()) doReturn mockVungleInitializer
       adapterRtbInterstitialAd.render(mediationInterstitialAdConfiguration)
     }
+    whenever(vungleInterstitialAd.canPlayAd()) doReturn true
 
     adapterRtbInterstitialAd.showAd(context)
 
