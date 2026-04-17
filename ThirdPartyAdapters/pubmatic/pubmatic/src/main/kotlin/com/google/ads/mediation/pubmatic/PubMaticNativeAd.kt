@@ -178,7 +178,7 @@ private constructor(
     pobNativeAd?.registerViewForInteraction(
       containerView,
       clickableAssetViews.values.toList(),
-      this@PubMaticNativeAd
+      this
     )
   }
 
