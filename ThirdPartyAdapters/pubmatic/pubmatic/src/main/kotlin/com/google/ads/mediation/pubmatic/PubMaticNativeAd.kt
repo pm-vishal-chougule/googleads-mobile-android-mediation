@@ -56,8 +56,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.withContext
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.resume
 
@@ -175,14 +175,11 @@ private constructor(
     clickableAssetViews: Map<String?, View?>,
     nonclickableAssetViews: Map<String?, View?>,
   ) {
-    // Dispatch registerViewForInteraction call on Main Thread.
-    adapterScope.launch (Dispatchers.Main){
-      pobNativeAd?.registerViewForInteraction(
-        containerView,
-        clickableAssetViews.values.toList(),
-        this@PubMaticNativeAd,
-      )
-    }
+    pobNativeAd?.registerViewForInteraction(
+      containerView,
+      clickableAssetViews.values.toList(),
+      this@PubMaticNativeAd
+    )
   }
 
   class PubMaticNativeAdImage(imageUrl: String?, drawable: Drawable?) : Image() {
@@ -224,9 +221,9 @@ private constructor(
     loadIconImage()
 
     // Call pobNativeAd?.mediaView API on Main Thread.
-    adapterScope.launch (Dispatchers.Main) {
+    withContext(Dispatchers.Main) {
       val mediaView = pobNativeAd?.mediaView
-      if(mediaView != null){
+      if (mediaView != null) {
         setMediaView(mediaView)
         setHasVideoContent(true)
       }
@@ -275,7 +272,7 @@ private constructor(
     fun newInstance(
       mediationNativeAdConfiguration: MediationNativeAdConfiguration,
       mediationNativeAdLoadCallback:
-        MediationAdLoadCallback<NativeAdMapper, MediationNativeAdCallback>,
+      MediationAdLoadCallback<NativeAdMapper, MediationNativeAdCallback>,
       pubMaticAdFactory: PubMaticAdFactory,
       coroutineContext: CoroutineContext =
         PubMaticAdFactory.BACKGROUND_EXECUTOR.asCoroutineDispatcher(),
