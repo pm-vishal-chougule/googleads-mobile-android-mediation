@@ -3,7 +3,7 @@
 #### Version 5.0.0.2 (In progress)
 - Add Native video support through MediaView for PubMatic OpenWrap SDK.
 
-#### Version 5.0.0.1 (In progress)
+#### Version 5.0.0.1
 - Added property to build the adapter with GMA Next-Gen SDK dependency.
 - Fixed a bug where the `mediationUtils` object wasn't being initialized.
 
